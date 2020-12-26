@@ -10,7 +10,6 @@ public class InsertComand {
     }
 
     void comandInsert(String comandLine) throws SQLException {
-        System.out.println(comandLine);
         statement.executeUpdate(comandLine);
     }
 }

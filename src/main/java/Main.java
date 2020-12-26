@@ -18,7 +18,6 @@ public class Main {
         boolean exitFlag = true;
         String tableName = "students";
 
-
         try (Connection connection = DriverManager.getConnection("jdbc:sqlite:sample.db")) {
             Statement statement = connection.createStatement();
             insertComand = new InsertComand(statement);
@@ -30,13 +29,6 @@ public class Main {
 
                 if (symbolFromKeyboard.isPresent()) {
                     switch (symbolFromKeyboard.get()) {
-//                        System.out.println("1 - " + "create table");
-//                        System.out.println("2 - " + "add line");
-//                        System.out.println("3 - " + "delete line");
-//                        System.out.println("4 - " + "find students dy name with sort А to Я");
-//                        System.out.println("5 - " + "find all students with sort from А to Я");
-//                        System.out.println("0 - " + "delete table");
-//                        System.out.println("q" + "exit");
 
                         case "1":
                             System.out.println("1 is inputed");
@@ -59,7 +51,7 @@ public class Main {
                             System.out.println("Student is added");
                             break;
                         case "3":
-                            System.out.println("3  is inputed");
+                            System.out.println("3 is inputed");
                             insertComand.comandInsert("DELETE FROM " + tableName +
                                     " WHERE name = '" + menu.inputLetter("Input students name, which will be " +
                                     "deleted?") +
@@ -67,17 +59,17 @@ public class Main {
                             System.out.println("Student is deleted");
                             break;
                         case "4":
-                            System.out.println("4  is inputed");
+                            System.out.println("4 is inputed");
                             selectComand.comandSelect("SELECT * FROM " + tableName + " WHERE name =" +
                                     " '" + menu.inputLetter("Input student name, which will be found") + "'" +
                                     "ORDER BY name ASC;");
                             break;
                         case "5":
-                            System.out.println("5  is inputed");
+                            System.out.println("5 is inputed");
                             selectComand.comandSelect("SELECT * FROM " + tableName + " ORDER BY name ASC;");
                             break;
                         case "0":
-                            System.out.println("0  is inputed");
+                            System.out.println("0 is inputed");
                             insertComand.comandInsert("DROP TABLE IF EXISTS " + tableName + ";");
                             System.out.println("Table id droped");
                             break;

@@ -15,7 +15,10 @@ public class SelectComand {
         cursor = statement.executeQuery(comandLine);
         while (cursor.next()) {
             //вывод данных из таблицы
-            System.out.println(cursor.getString("name"));
+            System.out.print("name = " + cursor.getString("name") +", ");
+            System.out.print("lastName = " + cursor.getString("lastName")+", ");
+            System.out.print("age = " + cursor.getString("age")+", ");
+            System.out.println("groupNumber = " + cursor.getString("groupNumber")+".");
         }
     }
 }
