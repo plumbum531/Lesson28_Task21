@@ -13,7 +13,7 @@ public class Main {
     void run() {
         InsertComand insertComand;
         SelectComand selectComand;
-        Menu menu = new Menu();
+        ScanKeyboard scanKeyboard = new ScanKeyboard();
         Optional<String> symbolFromKeyboard;
         boolean exitFlag = true;
         String tableName = "students";
@@ -24,8 +24,8 @@ public class Main {
             selectComand = new SelectComand(statement);
 
             while (exitFlag) {
-                menu.showMenu();
-                symbolFromKeyboard = Optional.ofNullable(menu.inputLetter("Input letter"));
+                showMenu();
+                symbolFromKeyboard = Optional.ofNullable(scanKeyboard.inputLetter("Input letter"));
 
                 if (symbolFromKeyboard.isPresent()) {
                     switch (symbolFromKeyboard.get()) {
@@ -44,16 +44,16 @@ public class Main {
                             System.out.println("2 is inputed");
                             insertComand.comandInsert("INSERT INTO " + tableName + "(name, lastName,age, groupNumber)" +
                                     " VALUES(" +
-                                    " '" + menu.inputLetter("Input name") + "', " +
-                                    " '" + menu.inputLetter("Input lastName") + "', " +
-                                    " '" + menu.inputLetter("Input age") + "', " +
-                                    " '" + menu.inputLetter("Input groupNumber") + "');");
+                                    " '" + scanKeyboard.inputLetter("Input name") + "', " +
+                                    " '" + scanKeyboard.inputLetter("Input lastName") + "', " +
+                                    " '" + scanKeyboard.inputLetter("Input age") + "', " +
+                                    " '" + scanKeyboard.inputLetter("Input groupNumber") + "');");
                             System.out.println("Student is added");
                             break;
                         case "3":
                             System.out.println("3 is inputed");
                             insertComand.comandInsert("DELETE FROM " + tableName +
-                                    " WHERE name = '" + menu.inputLetter("Input students name, which will be " +
+                                    " WHERE name = '" + scanKeyboard.inputLetter("Input students name, which will be " +
                                     "deleted?") +
                                     "';");
                             System.out.println("Student is deleted");
@@ -61,7 +61,7 @@ public class Main {
                         case "4":
                             System.out.println("4 is inputed");
                             selectComand.comandSelect("SELECT * FROM " + tableName + " WHERE name =" +
-                                    " '" + menu.inputLetter("Input student name, which will be found") + "'" +
+                                    " '" + scanKeyboard.inputLetter("Input student name, which will be found") + "'" +
                                     "ORDER BY name ASC;");
                             break;
                         case "5":
@@ -82,13 +82,22 @@ public class Main {
                             break;
                     }
                 } else {
-                    System.out.println("Repeat input line");
-                    continue;
+                    System.out.println("Repeat input line. Any symbol is found.");
                 }
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
         System.out.println("Program is finished");
+    }
+
+    void showMenu() {
+        System.out.println("1 - " + "create table");
+        System.out.println("2 - " + "add line");
+        System.out.println("3 - " + "delete line");
+        System.out.println("4 - " + "find students dy name with sort А to Я");
+        System.out.println("5 - " + "find all students with sort from А to Я");
+        System.out.println("0 - " + "delete table");
+        System.out.println("q - " + "exit");
     }
 }

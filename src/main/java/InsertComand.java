@@ -3,7 +3,7 @@ import java.sql.Statement;
 
 public class InsertComand {
 
-    private Statement statement;
+    private final Statement statement;
 
     public InsertComand(Statement statement) {
         this.statement = statement;

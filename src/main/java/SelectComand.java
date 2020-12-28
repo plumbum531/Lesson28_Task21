@@ -4,7 +4,7 @@ import java.sql.Statement;
 
 public class SelectComand {
 
-    private Statement statement;
+    private final Statement statement;
     ResultSet cursor;
 
     public SelectComand(Statement statement) {
